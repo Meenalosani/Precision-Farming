@@ -1,0 +1,115 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FARM APP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  </head>
+  <body style="background-color:#5ad69c;">
+    <nav class="navbar navbar-expand-lg static-top py-md-4" style="background-color:#107345;color:azure;">
+      <div class="container">      
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive" style="color:rgb(250, 250, 250);margin-left: 1100px;">
+          <ul class="navbar-nav ml-auto" style="width: 30px; height: 50px;color:antiquewhite;">
+            <li class="nav-item active" style="color:whitesmoke;">
+              <a class="nav-link" href="{{ url_for('home') }}"><span style="color:aliceblue">Home</span>
+                  </a>
+            </li>
+            <li class="nav-item" style="color:whitesmoke;">
+              <a class="nav-link" href="{{ url_for('crop_recommend') }}"><span style="color:aliceblue">Crop</span></a>
+            </li>
+            <li class="nav-item" style="color:whitesmoke;">
+              <a class="nav-link" href="{{ url_for('fertilizer_recommendation') }}"><span style="color:aliceblue">Fertilizer</span></a>
+            </li>
+            <li class="nav-item" style="color:whitesmoke;">
+              <a class="nav-link" href="{{ url_for('index') }}"><span style="color:aliceblue">Yield</span></a>
+            </li>
+          
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h1 class="text-center text-success">CROP YIELD PREDICTION</h1>
+<!--	Year	average_rain_fall_mm_per_year	pesticides_tonnes	avg_temp	Area	Item-->
+  <div class="container my-4 mt-4" style="background-color: #5ad69c; width: 350px;
+  height: 40rem;
+  margin: 0px auto;
+  color: black;
+  border-radius: 25px;
+  padding: 10px 10px; ">
+
+    <h1 class="text-center text" style="color:aliceblue;">Fill The Fields</h1>
+
+    <form action="/yieldpredict" method="post">
+    <div class="form-group">
+        <label for="Year"></label>
+        <input type="number" class="form-control" name="Year" step="any" value="" placeholder="Enter Year">
+    </div>
+    <div class="form-group">
+        <label for="average_rain_fall_mm_per_year"></label>
+        <input type="number" class="form-control" name="average_rain_fall_mm_per_year" step="any" placeholder="Average_Rain_Fall_Mm_Per_Year">
+    </div>
+    <div class="form-group">
+        <label for="pesticides_tonnes"></label>
+        <input type="number" class="form-control" name="pesticides_tonnes" step="any" placeholder="Pesticides_Tonnes" >
+    </div>
+    <div class="form-group">
+        <label for="avg_temp"></label>
+        <input type="number" class="form-control" name="avg_temp" step="any" placeholder="Avg_Temp">
+    </div>
+    <div class="form-group">
+        <label for="Area"></label>
+        <input type="text" class="form-control" name="Area" placeholder="Area">
+    </div>
+    <div class="form-group">
+        <label for="Item"></label>
+        <input type="text" class="form-control" name="Item" placeholder="Item">
+    </div><center>
+    <button type="submit" class="btn btn-success btn-lg mt-2 btn-block">Predict</button></center>
+</form>
+
+
+      {% if prediction %}
+      <h1 class="text-center"> Predicted Yield: <br>{{prediction}} hg/ha</h1>
+
+      {% endif %}
+</div>
+
+  <footer class="text-center py-md-4" style="background-color:#107345;">
+		<div class="container py-md-3">
+			<!-- logo -->
+			<h2 class="logo2 text-center">
+				<h6 style="color:aliceblue">
+          <sub>KM</sub>2 <sub>FARM APP</sub>
+        </h6>
+			</h2>
+			<!-- //logo -->
+			<!-- address -->
+			<div class="contact-left-footer mt-4">
+
+
+
+
+
+				<!-- <a href="community.html">Community</a> -->
+				</p>
+			</div>
+			<div class="w3l-copy text-center">
+				
+			</div>
+			<p class="homelogo">
+			<p style="color: aquamarine;">Made with python</p>
+			<p style="color: aquamarine;">&copy; Copyright Farm App 2024</p>
+			
+		</div>
+	</footer>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
